@@ -2,34 +2,43 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { auth } from "../firebase/firebase"; // Import Firebase auth
+import { onAuthStateChanged } from "firebase/auth"; // Removed signOut import
 import { Button } from "./ui/button";
+import { User } from "firebase/auth"; // Import User type from Firebase
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+  const [user, setUser] = useState<User | null>(null); // Explicitly type user state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navLinks: { name: string; path: string }[] = [
-    { name: "About", path: "/about" },
-    { name: "Pricing", path: "/pricing" },
-    { name: "Contact", path: "/contact" },
-    { name: "Login", path: "/login" },
-  ];
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const navLinks = [
+    { name: "About", path: "/about" },
+    { name: "Pricing", path: "/pricing" },
+    user
+      ? { name: "Dashboard", path: "/dashboard" }
+      : { name: "Login", path: "/login" },
+  ];
+
   return (
     <>
-      {/* Add a div with min-height to prevent content overlap */}
       <div className="min-h-16" />
-      
       <header
         className={`fixed w-full top-0 z-50 transition-all duration-300 ${
           scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
@@ -37,14 +46,12 @@ const Navbar: React.FC = () => {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo positioned to the left edge */}
-            <div className="flex-shrink-0 pl-0">
+            <div className="flex-shrink-0">
               <Link href="/" className="font-bold text-xl">
                 Finance-interview
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
             <nav className="hidden md:block">
               <ul className="flex space-x-8">
                 {navLinks.map((link) => (
@@ -64,7 +71,6 @@ const Navbar: React.FC = () => {
               </ul>
             </nav>
 
-            {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center">
               <Button
                 variant="ghost"
@@ -88,7 +94,6 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Dropdown */}
           {isMenuOpen && (
             <div className="md:hidden absolute w-full bg-white shadow-md mt-2 py-2 z-50">
               <ul className="flex flex-col items-center space-y-4">
