@@ -1,17 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { auth } from "../firebase/firebase"; // Import Firebase auth
-import { onAuthStateChanged } from "firebase/auth"; // Removed signOut import
+import { usePathname, useRouter } from "next/navigation"; // Import useRouter
+import { auth } from "../firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import { Button } from "./ui/button";
-import { User } from "firebase/auth"; // Import User type from Firebase
+import { User } from "firebase/auth";
+import { logout } from "@/app/login/userAuth";
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [user, setUser] = useState<User | null>(null); // Explicitly type user state
+  const [user, setUser] = useState<User | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter(); // Initialize the router
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +29,16 @@ const Navbar: React.FC = () => {
     });
     return () => unsubscribe();
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setUser(null); // Clear the user state
+      router.push("/"); // Redirect to the home page
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
 
   const navLinks = [
     { name: "About", path: "/about" },
@@ -68,6 +80,17 @@ const Navbar: React.FC = () => {
                     </Link>
                   </li>
                 ))}
+                {/* Logout Button (only shown when user is logged in) */}
+                {user && (
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="relative py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                )}
               </ul>
             </nav>
 
@@ -108,6 +131,17 @@ const Navbar: React.FC = () => {
                     </Link>
                   </li>
                 ))}
+                {/* Logout Button (only shown when user is logged in) */}
+                {user && (
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="block py-2 text-gray-800 hover:text-gray-900"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                )}
               </ul>
             </div>
           )}

@@ -1,15 +1,27 @@
 import { auth, googleProvider, signInWithPopup, db } from "../firebase/firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc , getDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
 
 export const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
   
-      // Save user data with a default role of `null`
+      // Check if the user already exists in Firestore
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+  
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        if (userData.role !== null) {
+          // User already has a role, return the user without setting role to null
+          return user;
+        }
+      }
+  
+      // If the user doesn't exist or has no role, set the role to null
       await setDoc(
-        doc(db, "users", user.uid), // Reference to the Firestore document
+        doc(db, "users", user.uid),
         {
           email: user.email,
           role: null, // Default role
@@ -88,6 +100,16 @@ export const updateUserRole = async (userId: string, role: string) => {
       console.log("User role updated successfully.");
     } catch (error) {
       console.error("Error updating user role:", error);
+      throw error;
+    }
+  };
+  
+  export const logout = async () => {
+    try {
+      await signOut(auth);
+      console.log("User logged out successfully.");
+    } catch (error) {
+      console.error("Error logging out:", error);
       throw error;
     }
   };

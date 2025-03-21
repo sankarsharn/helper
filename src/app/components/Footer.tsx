@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0E0E10] border-t border-white/[0.08] py-12">
-      <div className="container mx-auto px-4">
+    <footer className="bg-gray-900 border-t border-white/[0.08] py-8">
+      <div className="container mx-auto px-3">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-[#a9a9a9]">
           {/* About Section */}
           <div>
@@ -29,7 +29,7 @@ const Footer = () => {
 
           {/* Resources Section */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">Resources</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -51,7 +51,7 @@ const Footer = () => {
 
           {/* Industries Section */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Industries</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">Industries</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright and Legal Links */}
-        <div className="mt-8 border-t border-white/[0.08] pt-6 text-center text-sm">
+        <div className="mt-5 border-t border-white/[0.08] pt-4 text-center text-sm">
           <p className="text-[#a9a9a9]">
             Copyright © 2024 AI Finance Prep. All rights reserved.
           </p>

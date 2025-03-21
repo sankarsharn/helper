@@ -19,7 +19,7 @@ const Dashboard = () => {
           const role = userDoc.data().role;
           setUserRole(role);
 
-          // Show modal if role is null
+          // Show modal only if role is null
           if (role === null) {
             setIsModalOpen(true);
           }
