@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation"; // Import useRouter
+import { usePathname, useRouter } from "next/navigation";
 import { auth } from "../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Button } from "./ui/button";
@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter(); // Initialize the router
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,8 +33,8 @@ const Navbar: React.FC = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      setUser(null); // Clear the user state
-      router.push("/"); // Redirect to the home page
+      setUser(null);
+      router.push("/");
     } catch (error) {
       console.error("Error during logout:", error);
     }
@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
                   <li>
                     <button
                       onClick={handleLogout}
-                      className="relative py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+                      className="relative py-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
                     >
                       Logout
                     </button>

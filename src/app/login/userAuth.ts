@@ -19,13 +19,21 @@ export const signInWithGoogle = async () => {
         }
       }
   
-      // If the user doesn't exist or has no role, set the role to null
+      // If the user doesn't exist or has no role, set default values
       await setDoc(
         doc(db, "users", user.uid),
         {
           email: user.email,
           role: null, // Default role
           createdAt: new Date().toISOString(),
+          plan: 0, // Default free plan
+          interview: 3, // 3 interviews per week
+          questionBank: 0, // Basic access
+          progressTracking: 0, // Free plan
+          caseStudy: {
+            plan: 0,
+            perWeek: 0,
+          },
         },
         { merge: true } // Merge with existing document (if any)
       );
@@ -58,6 +66,14 @@ export const signUpWithEmail = async (
         email: user.email,
         role: role, // Add the selected role
         createdAt: new Date().toISOString(),
+        plan: 0, // Default free plan
+        interview: 3, // 3 interviews per week
+        questionBank: 0, // Basic access
+        progressTracking: 0, // Free plan
+        caseStudy: {
+          plan: 0,
+          perWeek: 0,
+        },
       });
   
       return user;
