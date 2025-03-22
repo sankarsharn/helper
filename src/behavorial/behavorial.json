@@ -1,0 +1,1166 @@
+[
+    {
+      "question": "Tell me about a time you worked in a team. What was your role, and how did you contribute?"
+    },
+    {
+      "question": "Describe a situation where you had to meet a tight deadline. How did you manage your time?"
+    },
+    {
+      "question": "Give an example of a time you received constructive feedback. How did you respond?"
+    },
+    {
+      "question": "Tell me about a time you had to adapt to a sudden change at work or school."
+    },
+    {
+      "question": "Describe a situation where you had to communicate complex information to someone with less expertise."
+    },
+    {
+      "question": "Share an example of when you went above and beyond to achieve a goal."
+    },
+    {
+      "question": "Tell me about a time you resolved a conflict within a team."
+    },
+    {
+      "question": "Describe a situation where you had to prioritize multiple tasks. How did you decide what to focus on?"
+    },
+    {
+      "question": "Give an example of a time you failed. What did you learn from the experience?"
+    },
+    {
+      "question": "Tell me about a time you had to work with someone who had a different working style than yours."
+    },
+    {
+      "question": "Tell me about a time you had to lead a team through a challenging project. What was the outcome?"
+    },
+    {
+      "question": "Describe a situation where you had to persuade a colleague or manager to adopt your idea."
+    },
+    {
+      "question": "Give an example of a time you had to make a decision with incomplete information. How did you proceed?"
+    },
+    {
+      "question": "Tell me about a time you had to manage a difficult client or stakeholder. How did you handle the situation?"
+    },
+    {
+      "question": "Describe a situation where you had to take initiative without being asked."
+    },
+    {
+      "question": "Share an example of when you had to balance competing priorities from multiple stakeholders."
+    },
+    {
+      "question": "Tell me about a time you had to learn a new skill or concept quickly to complete a task."
+    },
+    {
+      "question": "Describe a situation where you had to deliver bad news to a team or client. How did you approach it?"
+    },
+    {
+      "question": "Give an example of a time you had to work with a team member who wasn’t pulling their weight."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with limited resources."
+    },
+    {
+      "question": "Describe a situation where you had to deal with a high-pressure environment. How did you stay calm?"
+    },
+    {
+      "question": "Share an example of when you had to navigate office politics to achieve a goal."
+    },
+    {
+      "question": "Tell me about a time you had to mentor or train someone. What was the outcome?"
+    },
+    {
+      "question": "Describe a situation where you had to make an unpopular decision. How did you handle the backlash?"
+    },
+    {
+      "question": "Give an example of a time you identified a problem before it escalated. What steps did you take?"
+    },
+    {
+      "question": "Tell me about a time you had to collaborate with a team remotely. What challenges did you face?"
+    },
+    {
+      "question": "Describe a situation where you had to manage a project that was falling behind schedule."
+    },
+    {
+      "question": "Share an example of when you had to negotiate with someone to reach a mutually beneficial outcome."
+    },
+    {
+      "question": "Tell me about a time you had to handle a sensitive or confidential situation."
+    },
+    {
+      "question": "Describe a situation where you had to take responsibility for a mistake that wasn’t entirely your fault."
+    },
+    {
+      "question": "Tell me about a time you had to lead a team through a major organizational change. How did you ensure success?"
+    },
+    {
+      "question": "Describe a situation where you had to manage a team with conflicting personalities. How did you maintain harmony?"
+    },
+    {
+      "question": "Give an example of a time you had to make a decision that went against your manager’s advice. What was the outcome?"
+    },
+    {
+      "question": "Tell me about a time you had to rebuild trust with a colleague or client after a mistake."
+    },
+    {
+      "question": "Describe a situation where you had to manage a high-stakes project with no clear roadmap."
+    },
+    {
+      "question": "Share an example of when you had to influence a decision at the executive level."
+    },
+    {
+      "question": "Tell me about a time you had to handle a crisis that threatened the success of a project."
+    },
+    {
+      "question": "Describe a situation where you had to manage a team across different time zones and cultures."
+    },
+    {
+      "question": "Give an example of a time you had to pivot a project or strategy mid-way due to unexpected challenges."
+    },
+    {
+      "question": "Tell me about a time you had to manage a team member who was underperforming but had a strong personal relationship with senior management."
+    },
+    {
+      "question": "Describe a situation where you had to balance ethical considerations with business objectives."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a budget that was significantly reduced mid-way."
+    },
+    {
+      "question": "Tell me about a time you had to lead a team through a period of significant uncertainty or ambiguity."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project that failed. What did you do next?"
+    },
+    {
+      "question": "Give an example of a time you had to challenge the status quo to achieve a better outcome."
+    },
+    {
+      "question": "Tell me about a time you had to manage a team through a merger, acquisition, or restructuring."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a highly diverse team (e.g., different backgrounds, expertise, or working styles)."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a client who had unrealistic expectations."
+    },
+    {
+      "question": "Tell me about a time you had to make a decision that had significant long-term consequences for your team or organization."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project that required you to learn an entirely new industry or domain."
+    },
+    {
+      "question": "Tell me about a time you had to manage a team member who was resistant to change."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a tight budget. How did you allocate resources?"
+    },
+    {
+      "question": "Give an example of a time you had to resolve a conflict between two team members."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a tight deadline and limited resources."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was geographically dispersed."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a client who was unhappy with the progress."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that had conflicting priorities."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was underperforming."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was overworked."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was demotivated."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was resistant to new ideas."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project goals."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not communicating effectively."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not meeting deadlines."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not following processes."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not delivering quality work."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not collaborating effectively."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not meeting expectations."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the company’s vision."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the client’s expectations."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project scope."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project timeline."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project budget."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project deliverables."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risks."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholders."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project objectives."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project success criteria."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project constraints."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project assumptions."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project dependencies."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project milestones."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project deliverables."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality standards."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communication plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project change management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project procurement management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project stakeholder management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project resource management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project schedule management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project cost management plan."
+    },
+    {
+      "question": "Give an example of a time you had to manage a project with a team that was not aligned with the project quality management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project scope management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project integration management plan."
+    },
+    {
+      "question": "Share an example of when you had to manage a project with a team that was not aligned with the project communications management plan."
+    },
+    {
+      "question": "Tell me about a time you had to manage a project with a team that was not aligned with the project risk management plan."
+    },
+    {
+      "question": "Describe a situation where you had to manage a project with a team that was not aligned with the project procurement management plan."
+    }
+]
