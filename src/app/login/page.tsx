@@ -182,12 +182,12 @@ export default function LoginPage() {
                     <option value="" disabled>
                       Select your role
                     </option>
-                    <option value="Investment Banking (IB)">Investment Banking (IB)</option>
-                    <option value="Private Equity (PE)">Private Equity (PE)</option>
-                    <option value="Hedge Funds (HF)">Hedge Funds (HF)</option>
-                    <option value="Equity Research (ER)">Equity Research (ER)</option>
-                    <option value="Asset Management (AM)">Asset Management (AM)</option>
-                    <option value="Corporate Finance (CF)">Corporate Finance (CF)</option>
+                    <option value="Investment Banking">Investment Banking (IB)</option>
+                    <option value="Private Equity">Private Equity (PE)</option>
+                    <option value="Hedge Funds">Hedge Funds (HF)</option>
+                    <option value="Equity Research">Equity Research (ER)</option>
+                    <option value="Asset Management">Asset Management (AM)</option>
+                    <option value="Corporate Finance">Corporate Finance (CF)</option>
                   </select>
                 </div>
               </div>
