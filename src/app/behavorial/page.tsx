@@ -255,14 +255,7 @@ const Page = () => {
             </div>
 
             {/* Scrollable Content Section */}
-            <div className="flex-1 overflow-y-auto">
-              {/* Bot's Answer (Visible after evaluation) */}
-              {showBotAnswer && (
-                <div className="p-3 bg-gray-100 rounded-lg text-left mb-4">
-                  <strong>Example Answer:</strong>
-                  <p className="text-gray-700 mt-2">{botAnswer}</p>
-                </div>
-              )}
+            <div className="flex-1 overflow-y-auto">          
 
               {/* User's Score (Visible after evaluation) */}
               {isAnswerEvaluated && (

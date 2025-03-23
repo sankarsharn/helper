@@ -254,13 +254,7 @@ const Page = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto">
-              {showBotAnswer && (
-                <div className="p-3 bg-gray-100 rounded-lg text-left mb-4">
-                  <strong>Example Answer:</strong>
-                  <p className="text-gray-700 mt-2">{botAnswer}</p>
-                </div>
-              )}
-
+            
               {isAnswerEvaluated && (
                 <div className="p-3 bg-gray-100 rounded-lg text-left mb-4">
                   <strong>Your Score:</strong>
