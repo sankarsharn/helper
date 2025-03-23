@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { BrainCircuit } from "lucide-react";
+import { BrainCircuit, Mic, MicOff } from "lucide-react"; // Import microphone icons
 import { useRouter } from "next/navigation";
 import { auth } from "@/app/firebase/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
@@ -21,9 +21,51 @@ const Page = () => {
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [isAnswerEvaluated, setIsAnswerEvaluated] = useState(false);
   const [showBotAnswer, setShowBotAnswer] = useState(false);
-  const [interviewCount, setInterviewCount] = useState(3); // Track interview count
-  const [userPlan, setUserPlan] = useState(0); // Track user's plan
+  const [interviewCount, setInterviewCount] = useState(3);
+  const [userPlan, setUserPlan] = useState(0);
+  const [isListening, setIsListening] = useState(false); // Track speech recognition state
+  const recognitionRef = useRef(null); // Ref for SpeechRecognition object
   const modalRef = useRef(null);
+
+  // Initialize SpeechRecognition
+  useEffect(() => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = false; // Stop after one sentence
+      recognitionRef.current.interimResults = false; // Only final results
+      recognitionRef.current.lang = "en-US"; // Set language
+
+      recognitionRef.current.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setUserAnswer((prev) => prev + " " + transcript); // Append recognized text
+        setIsListening(false); // Stop listening after result
+      };
+
+      recognitionRef.current.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+        setIsListening(false);
+      };
+
+      recognitionRef.current.onend = () => {
+        setIsListening(false);
+      };
+    } else {
+      console.warn("Speech recognition not supported in this browser.");
+    }
+  }, []);
+
+  // Start/stop speech recognition
+  const toggleListening = () => {
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      recognitionRef.current.start();
+      setIsListening(true);
+    }
+  };
 
   // Shuffle array function
   const shuffleArray = (array) => {
@@ -41,7 +83,7 @@ const Page = () => {
       const userDoc = await getDoc(doc(db, "users", user.uid));
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        setUserPlan(userData.plan || 0); // Set user's plan
+        setUserPlan(userData.plan || 0);
 
         // Set interview count (only default to 3 if interview is undefined or null)
         const interviews = userData.interview;
@@ -241,13 +283,26 @@ const Page = () => {
                     rows={4}
                   />
 
+                  {/* Microphone Button for Speech-to-Text */}
+                  <button
+                    onClick={toggleListening}
+                    className={`w-full px-6 py-3 rounded-lg shadow-md transition cursor-pointer flex items-center justify-center gap-2 ${
+                      isListening
+                        ? "bg-red-600 hover:bg-red-700"
+                        : "bg-gray-600 hover:bg-gray-700"
+                    } text-white`}
+                  >
+                    {isListening ? <MicOff size={20} /> : <Mic size={20} />}
+                    {isListening ? "Stop Listening" : "Start Speaking"}
+                  </button>
+
                   <button
                     onClick={handleEvaluateAnswer}
                     className={`w-full px-6 py-3 rounded-lg shadow-md transition cursor-pointer ${
                       isEvaluating
                         ? "bg-gray-400"
                         : "bg-gray-600 hover:bg-gray-700 text-white"
-                    }`}
+                    } mt-4`}
                     disabled={isEvaluating}
                   >
                     {isEvaluating ? "Evaluating..." : "Evaluate Answer"}

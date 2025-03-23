@@ -9,19 +9,10 @@ import { User } from "firebase/auth";
 import { logout } from "@/app/login/userAuth";
 
 const Navbar: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -43,19 +34,13 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: "About", path: "/about" },
     { name: "Pricing", path: "/pricing" },
-    user
-      ? { name: "Dashboard", path: "/dashboard" }
-      : { name: "Login", path: "/login" },
+    user ? { name: "Dashboard", path: "/dashboard" } : { name: "Login", path: "/login" },
   ];
 
   return (
     <>
       <div className="min-h-16" />
-      <header
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
-        }`}
-      >
+      <header className="fixed w-full top-0 z-50 bg-transparent">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
@@ -64,8 +49,8 @@ const Navbar: React.FC = () => {
               </Link>
             </div>
 
-            <nav className="hidden md:block">
-              <ul className="flex space-x-8">
+            <nav className="hidden md:flex items-center">
+              <ul className="flex items-center space-x-8">
                 {navLinks.map((link) => (
                   <li key={link.path}>
                     <Link
@@ -80,15 +65,18 @@ const Navbar: React.FC = () => {
                     </Link>
                   </li>
                 ))}
+                
                 {/* Logout Button (only shown when user is logged in) */}
                 {user && (
-                  <li>
-                    <button
+                  <li className="ml-4">
+                    <Button 
                       onClick={handleLogout}
-                      className="relative py-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+                      variant="outline" 
+                      size="sm"
+                      className="font-medium bg-white/80 hover:bg-white/95"
                     >
                       Logout
-                    </button>
+                    </Button>
                   </li>
                 )}
               </ul>
@@ -99,6 +87,7 @@ const Navbar: React.FC = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="bg-white/80 hover:bg-white/95 rounded-full"
               >
                 <svg
                   className="h-6 w-6"
@@ -110,7 +99,7 @@ const Navbar: React.FC = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
+                    d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
                   />
                 </svg>
               </Button>
@@ -118,28 +107,35 @@ const Navbar: React.FC = () => {
           </div>
 
           {isMenuOpen && (
-            <div className="md:hidden absolute w-full bg-white shadow-md mt-2 py-2 z-50">
+            <div className="md:hidden absolute left-0 right-0 bg-white/95 backdrop-blur-md shadow-md mt-2 py-4 rounded-lg mx-4 z-50">
               <ul className="flex flex-col items-center space-y-4">
                 {navLinks.map((link) => (
-                  <li key={link.path}>
+                  <li key={link.path} className="w-full text-center">
                     <Link
                       href={link.path}
-                      className="block py-2 text-gray-800 hover:text-gray-900"
+                      className={`block py-2 text-sm font-medium ${
+                        pathname === link.path ? "text-gray-900" : "text-gray-600"
+                      } hover:text-gray-900`}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {link.name}
                     </Link>
                   </li>
                 ))}
+                
                 {/* Logout Button (only shown when user is logged in) */}
                 {user && (
-                  <li>
-                    <button
-                      onClick={handleLogout}
-                      className="block py-2 text-gray-800 hover:text-gray-900"
+                  <li className="w-full text-center pt-2 border-t border-gray-100">
+                    <Button
+                      onClick={() => {
+                        handleLogout();
+                        setIsMenuOpen(false);
+                      }}
+                      variant="ghost"
+                      className="text-sm font-medium text-gray-600 hover:text-gray-900 w-full"
                     >
                       Logout
-                    </button>
+                    </Button>
                   </li>
                 )}
               </ul>

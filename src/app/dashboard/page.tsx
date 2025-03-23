@@ -1,4 +1,3 @@
-// app/dashboard/page.tsx
 "use client";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase";
@@ -8,22 +7,30 @@ import { db } from "../firebase/firebase";
 import RoleSelectionModal from "../components/RoleSelectionModal";
 import { updateUserRole } from "@/app/login/userAuth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Dashboard = () => {
   const [userRole, setUserRole] = useState<string | null>(null);
+  const [userPlan, setUserPlan] = useState<number>(0); // Default to free plan
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
   );
+  const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const userDoc = await getDoc(doc(db, "users", user.uid));
         if (userDoc.exists()) {
-          const role = userDoc.data().role;
+          const userData = userDoc.data();
+          const role = userData.role;
           setUserRole(role);
+
+          // Get user plan, default to 0 (free) if not set
+          const plan = userData.plan !== undefined ? userData.plan : 0;
+          setUserPlan(plan);
 
           // Show modal only if role is null
           if (role === null) {
@@ -65,11 +72,22 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  // Handler for progress link clicks
+  const handleProgressClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (userPlan === 0) {
+      // Free plan
+      router.push("/pricing");
+    } else {
+      router.push("/progress");
+    }
+  };
+
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-neutral-900"> {/* Dark background */}
       {/* Sidebar */}
       <div
-        className={`bg-white shadow-lg transition-all duration-300 flex flex-col ${
+        className={`bg-neutral-800 shadow-lg transition-all duration-300 flex flex-col ${
           isSidebarOpen ? "w-64" : "w-16"
         }`}
       >
@@ -77,7 +95,7 @@ const Dashboard = () => {
           {/* Collapse Button */}
           <button
             onClick={toggleSidebar}
-            className="text-gray-600 hover:text-gray-800 focus:outline-none"
+            className="text-gray-300 hover:text-gray-100 focus:outline-none"
           >
             {isSidebarOpen ? (
               <svg
@@ -117,7 +135,7 @@ const Dashboard = () => {
         <nav className="mt-4 space-y-2 px-4 flex-grow">
           <Link
             href="/dashboard"
-            className="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg transition-colors"
+            className="flex items-center p-3 text-gray-300 hover:bg-neutral-700 rounded-lg transition-colors"
           >
             <div className="min-w-6 flex justify-center">
               <svg
@@ -137,9 +155,11 @@ const Dashboard = () => {
             </div>
             {isSidebarOpen && <span className="ml-2">Dashboard</span>}
           </Link>
-          <Link
-            href="/progress"
-            className="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg transition-colors"
+          {/* Progress link with conditional redirect */}
+          <a
+            href="#"
+            onClick={handleProgressClick}
+            className="flex items-center p-3 text-gray-300 hover:bg-neutral-700 rounded-lg transition-colors"
           >
             <div className="min-w-6 flex justify-center">
               <svg
@@ -157,11 +177,31 @@ const Dashboard = () => {
                 />
               </svg>
             </div>
-            {isSidebarOpen && <span className="ml-2">Progress</span>}
-          </Link>
+            {isSidebarOpen && (
+              <span className="ml-2">
+                Progress
+                {userPlan === 0 && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 inline-block ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                )}
+              </span>
+            )}
+          </a>
           <Link
             href="/pricing"
-            className="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg transition-colors"
+            className="flex items-center p-3 text-gray-300 hover:bg-neutral-700 rounded-lg transition-colors"
           >
             <div className="min-w-6 flex justify-center">
               <svg
@@ -184,16 +224,21 @@ const Dashboard = () => {
         </nav>
 
         {/* User Role at the Bottom (now properly inside the sidebar) */}
-        <div className="p-4 bg-gray-100 mt-auto">
+        <div className="p-4 bg-neutral-700 mt-auto">
           {isSidebarOpen ? (
-            <p className="text-sm text-gray-700">
-              Role: <span className="font-semibold">{userRole || "Not set"}</span>
-            </p>
+            <div>
+              <p className="text-sm text-gray-300">
+                Role: <span className="font-semibold">{userRole || "Not set"}</span>
+              </p>
+              <p className="text-sm text-gray-300 mt-1">
+                Plan: <span className="font-semibold">{userPlan === 0 ? "Free" : "Premium"}</span>
+              </p>
+            </div>
           ) : (
             <div className="flex justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-700"
+                className="h-6 w-6 text-gray-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -212,18 +257,68 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <div className="flex-1 p-6">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-        <Link href="/question">
-        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-          Go to Question Page
-        </button>
-      </Link>
-      <Link href="/interview">
-        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-          AI powered mock interview
-        </button>
-      </Link>
-        <p>Your current role: {userRole || "Not set"}</p>
+        <h1 className="text-2xl font-bold text-gray-200">Dashboard</h1>
+        <p className="text-gray-400 mt-2">
+          Your current role: {userRole || "Not set"}
+        </p>
+
+        {/* Cards Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          {/* Card 1: Question Page */}
+          <Link href="/question">
+            <div className="bg-neutral-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+              <h2 className="text-xl font-semibold text-gray-200">
+                Question Bank
+              </h2>
+              <p className="text-gray-400 mt-2">
+                Practice questions tailored to your role.
+              </p>
+              <button className="mt-4 px-4 py-2 bg-neutral-700 text-gray-200 rounded-lg hover:bg-neutral-600 transition-colors">
+                Go to Questions
+              </button>
+            </div>
+          </Link>
+
+          {/* Card 2: AI-Powered Mock Interview */}
+          <Link href="/interview">
+            <div className="bg-neutral-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+              <h2 className="text-xl font-semibold text-gray-200">
+                AI-Powered Mock Interview
+              </h2>
+              <p className="text-gray-400 mt-2">
+                Simulate real interviews with AI feedback.
+              </p>
+              <button className="mt-4 px-4 py-2 bg-neutral-700 text-gray-200 rounded-lg hover:bg-neutral-600 transition-colors">
+                Start Interview
+              </button>
+            </div>
+          </Link>
+
+          {/* Card 3: Progress Tracking with conditional redirect */}
+          <div
+            onClick={handleProgressClick}
+            className="bg-neutral-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+          >
+            <div className="flex justify-between items-start">
+              <h2 className="text-xl font-semibold text-gray-200">
+                Progress Tracking
+              </h2>
+              {userPlan === 0 && (
+                <span className="bg-yellow-800 text-yellow-100 text-xs font-medium px-2.5 py-0.5 rounded">
+                  Premium
+                </span>
+              )}
+            </div>
+            <p className="text-gray-400 mt-2">
+              {userPlan === 0
+                ? "Upgrade to track your progress and performance."
+                : "Track your progress and performance."}
+            </p>
+            <button className="mt-4 px-4 py-2 bg-neutral-700 text-gray-200 rounded-lg hover:bg-neutral-600 transition-colors">
+              {userPlan === 0 ? "Upgrade Now" : "View Progress"}
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Role Selection Modal */}
