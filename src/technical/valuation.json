@@ -1,0 +1,703 @@
+[
+  {
+    "tag": "Valuation",
+    "question": "What are the three main valuation methods, and when would you use each?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Weighted Average Cost of Capital (WACC)?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between Enterprise Value (EV) and Equity Value?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate Free Cash Flow to the Firm (FCFF)?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between FCFF and Free Cash Flow to Equity (FCFE)?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Terminal Value in a DCF analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the Gordon Growth Model, and when is it used?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you determine the appropriate discount rate for a DCF?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between unlevered and levered beta?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Cost of Equity using CAPM?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between intrinsic value and market value?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you adjust beta for leverage when valuing a company?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a precedent transaction and a comparable company analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Equity Value from Enterprise Value?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a control premium and a synergy premium?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Net Present Value (NPV) of a project?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between IRR and NPV?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Payback Period for an investment?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a perpetuity and an annuity?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a growing perpetuity?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a LBO model?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Internal Rate of Return (IRR) for a project?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a leveraged and unlevered DCF?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Terminal Value using the Exit Multiple method?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a minority interest and a controlling interest in valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Cost of Debt for a company?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a strategic buyer and a financial buyer?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Equity Risk Premium?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a dividend discount model?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a forward P/E and a trailing P/E?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Enterprise Value to EBITDA multiple?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a trading multiples valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a zero-coupon bond?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a precedent transaction valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Yield to Maturity (YTM) of a bond?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a sum-of-the-parts valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of an annuity?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a liquidation valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a perpetuity?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a replacement cost valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a growing annuity?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a market approach valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with semi-annual coupons?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a cost approach valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with annual coupons?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a relative valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with quarterly coupons?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and an absolute valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with monthly coupons?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a market-based valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with daily coupons?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a transaction-based valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with continuous compounding?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a hybrid valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a floating rate?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a scenario-based valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a fixed rate?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a probabilistic valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a call option?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a real options valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a put option?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a decision tree valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a sinking fund?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a Monte Carlo simulation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a convertible feature?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a sensitivity analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a warrant?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a scenario analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a contingent payment?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a break-even analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a step-up coupon?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a payback period analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a step-down coupon?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a profitability index analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a zero-coupon feature?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a modified IRR analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a deferred coupon?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a discounted payback period analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a balloon payment?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a real options analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a bullet payment?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a decision tree analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a sinking fund provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a game theory analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a call provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a behavioral finance analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a put provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a machine learning analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a convertible provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a big data analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a warrant provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a blockchain analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a contingent payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a quantum computing analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a step-up coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a step-down coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a zero-coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a deferred coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a balloon payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a bullet payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a sinking fund provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a call provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a put provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a convertible provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a warrant provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a contingent payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a step-up coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a step-down coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a zero-coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a deferred coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a balloon payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a bullet payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a sinking fund provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a call provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a put provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a convertible provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a warrant provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a contingent payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a step-up coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a step-down coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a zero-coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a deferred coupon provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a balloon payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a nanotechnology analysis?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you calculate the Present Value of a bond with a bullet payment provision?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the difference between a DCF and a biotechnology analysis?"
+  },
+
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with negative free cash flows and high growth potential?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What adjustments would you make to the WACC for a company operating in multiple countries with different tax rates?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you incorporate real options (e.g., expansion, abandonment) into a DCF valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How would you value a startup with no revenue but significant intellectual property?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the impact of a company's capital structure on its valuation in a DCF model?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with cyclical revenues and unpredictable cash flows?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the impact of inflation on a DCF valuation, and how do you adjust for it?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with significant off-balance-sheet liabilities?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the impact of a company's pension obligations on its valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with a high degree of operating leverage?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the impact of a company's deferred tax assets/liabilities on its valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with a complex capital structure (e.g., convertible bonds, warrants, and preferred stock)?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the impact of a company's foreign currency exposure on its valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with significant intangible assets (e.g., brand value, patents)?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the impact of a company's environmental, social, and governance (ESG) factors on its valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with a high degree of regulatory risk?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the impact of a company's contingent liabilities (e.g., lawsuits) on its valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with a significant portion of its revenue from long-term contracts?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "What is the impact of a company's customer concentration risk on its valuation?"
+  },
+  {
+    "tag": "Valuation",
+    "question": "How do you value a company with a high degree of technological obsolescence risk?"
+  }
+]

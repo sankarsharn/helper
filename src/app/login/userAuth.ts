@@ -30,6 +30,7 @@ export const signInWithGoogle = async () => {
           interview: 3, // 3 interviews per week
           questionBank: 0, // Basic access
           progressTracking: 0, // Free plan
+          interviewGiven: 0,
           caseStudy: {
             plan: 0,
             perWeek: 0,
@@ -70,6 +71,7 @@ export const signUpWithEmail = async (
         interview: 3, // 3 interviews per week
         questionBank: 0, // Basic access
         progressTracking: 0, // Free plan
+        interviewGiven: 0,
         caseStudy: {
           plan: 0,
           perWeek: 0,
@@ -129,3 +131,57 @@ export const updateUserRole = async (userId: string, role: string) => {
       throw error;
     }
   };
+
+  export const purchasePro = async () => {
+    try {
+      const user = auth.currentUser;
+      if (!user) {
+        throw new Error("User is not logged in.");
+      }
+  
+      await setDoc(
+        doc(db, "users", user.uid),
+        { 
+          plan: 1,
+          interview: 1e10,
+          questionBank: 1,
+          progressTracking: 1,
+          caseStudy: {
+            plan: 1,
+            perWeek: 2
+          }
+        },
+        { merge: true } // Merge with existing document
+      );
+      console.log("Pro plan purchased successfully.");
+    } catch (error) {
+      console.error("Error purchasing Pro plan:", error);
+      throw error;
+    }
+  }
+
+export const purchasePremium = async () => {
+    try {
+        const User = auth.currentUser;
+        if(!User) {
+            throw new Error("User is not logged in.");
+        }
+        await setDoc(
+            doc(db, "users", User.uid),{
+                plan: 2,
+                interview: 1e10,
+                questionBank: 1,
+                progressTracking: 1,
+                caseStudy: {
+                    plan: 2,
+                    perWeek: 1e10
+                }
+            },
+            { merge: true
+            }
+        )
+    } catch (error) {
+        console.error("Error purchasing Premium plan:", error);
+        throw error;
+    }
+}

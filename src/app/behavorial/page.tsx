@@ -2,22 +2,30 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { BrainCircuit } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { auth } from "@/app/firebase/firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "@/app/firebase/firebase";
 import questions from "@/behavorial/behavorial.json";
 
 const API_URL = "http://localhost:5000";
 
 const Page = () => {
+  const router = useRouter();
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [userAnswer, setUserAnswer] = useState("");
-  const [botAnswer, setBotAnswer] = useState(""); // Store bot's answer
-  const [score, setScore] = useState(null); // Store user's score
+  const [botAnswer, setBotAnswer] = useState("");
+  const [score, setScore] = useState(null);
   const [isEvaluating, setIsEvaluating] = useState(false);
-  const [isAnswerEvaluated, setIsAnswerEvaluated] = useState(false); // Track if answer is evaluated
-  const [showBotAnswer, setShowBotAnswer] = useState(false); // Control showing the bot answer
+  const [isAnswerEvaluated, setIsAnswerEvaluated] = useState(false);
+  const [showBotAnswer, setShowBotAnswer] = useState(false);
+  const [interviewCount, setInterviewCount] = useState(3); // Track interview count
+  const [userPlan, setUserPlan] = useState(0); // Track user's plan
   const modalRef = useRef(null);
 
+  // Shuffle array function
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -26,7 +34,29 @@ const Page = () => {
     return array;
   };
 
-  const handleStartInterview = () => {
+  // Fetch user data (plan, interview count, and interviewGiven)
+  const fetchUserData = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        setUserPlan(userData.plan || 0); // Set user's plan
+
+        // Set interview count (only default to 3 if interview is undefined or null)
+        const interviews = userData.interview;
+        setInterviewCount(interviews !== undefined && interviews !== null ? interviews : 3);
+      }
+    }
+  };
+
+  // Handle starting the interview
+  const handleStartInterview = async () => {
+    if (userPlan === 0 && interviewCount <= 0) {
+      alert("No interviews remaining. Please upgrade your plan.");
+      return;
+    }
+
     const shuffledQuestions = shuffleArray([...questions]).slice(0, 20);
     setSelectedQuestions(shuffledQuestions);
     setCurrentQuestionIndex(0);
@@ -38,16 +68,15 @@ const Page = () => {
     setIsDialogOpen(true);
   };
 
+  // Fetch bot's answer
   const fetchBotAnswer = async (question) => {
     try {
-      // Step 1: Send the question to the bot
       await fetch(`${API_URL}/receive-question`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question }),
       });
 
-      // Step 2: Get the AI-generated response
       const response = await fetch(`${API_URL}/bot-answer`, { method: "GET" });
       const data = await response.json();
       setBotAnswer(data.bot_answer);
@@ -57,28 +86,26 @@ const Page = () => {
     }
   };
 
+  // Evaluate user's answer
   const handleEvaluateAnswer = async () => {
     if (!userAnswer.trim()) return;
     setIsEvaluating(true);
     try {
-      // First fetch the bot answer if we haven't already
       if (!botAnswer) {
         await fetchBotAnswer(selectedQuestions[currentQuestionIndex].question);
       }
 
-      // Step 3: Submit user's answer
       await fetch(`${API_URL}/submit-answer`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ answer: userAnswer }),
       });
 
-      // Step 4: Get evaluation score
       const response = await fetch(`${API_URL}/evaluate`, { method: "GET" });
       const data = await response.json();
       setScore(data.evaluation);
-      setIsAnswerEvaluated(true); // Hide answer box after evaluation
-      setShowBotAnswer(true); // Now show the bot answer
+      setIsAnswerEvaluated(true);
+      setShowBotAnswer(true);
     } catch (error) {
       console.error("Error evaluating answer:", error);
     } finally {
@@ -86,7 +113,8 @@ const Page = () => {
     }
   };
 
-  const handleNextQuestion = () => {
+  // Move to the next question or finish the interview
+  const handleNextQuestion = async () => {
     if (currentQuestionIndex < selectedQuestions.length - 1) {
       const nextIndex = currentQuestionIndex + 1;
       setCurrentQuestionIndex(nextIndex);
@@ -96,13 +124,37 @@ const Page = () => {
       setIsAnswerEvaluated(false);
       setShowBotAnswer(false);
     } else {
+      const user = auth.currentUser;
+      if (user) {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const updatedInterviewGiven = (userData.interviewGiven || 0) + 1; // Increase interviewGiven by 1
+
+          // Update Firestore with new interviewGiven and interview count (if free plan)
+          const updates = {
+            interviewGiven: updatedInterviewGiven,
+          };
+
+          if (userPlan === 0) {
+            const updatedInterviewCount = interviewCount - 1;
+            updates.interview = updatedInterviewCount;
+            setInterviewCount(updatedInterviewCount); // Update local state
+          }
+
+          await updateDoc(doc(db, "users", user.uid), updates);
+        }
+      }
+
       setIsDialogOpen(false);
+      router.push("/interview"); // Redirect to the interview page
     }
   };
 
+  // Prevent closing the modal during the interview
   const handleClickOutside = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
-      setIsDialogOpen(false);
+      event.preventDefault(); // Prevent closing the modal
     }
   };
 
@@ -115,6 +167,11 @@ const Page = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isDialogOpen]);
 
+  // Fetch user data on component mount
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6 text-center">
       <BrainCircuit size={80} className="text-black-600 mb-4" />
@@ -124,6 +181,13 @@ const Page = () => {
       <p className="text-gray-600 mt-2">
         Our AI-powered system will guide you through the process.
       </p>
+
+      {/* Show interview count for free plan users */}
+      {userPlan === 0 && (
+        <p className="text-gray-600 mt-2">
+          Interviews Remaining: {interviewCount}
+        </p>
+      )}
 
       <button
         onClick={handleStartInterview}
@@ -151,7 +215,12 @@ const Page = () => {
             {/* Scrollable Content Section */}
             <div className="flex-1 overflow-y-auto">
               {/* Bot's Answer (Visible after evaluation) */}
-              
+              {showBotAnswer && (
+                <div className="p-3 bg-gray-100 rounded-lg text-left mb-4">
+                  <strong>Example Answer:</strong>
+                  <p className="text-gray-700 mt-2">{botAnswer}</p>
+                </div>
+              )}
 
               {/* User's Score (Visible after evaluation) */}
               {isAnswerEvaluated && (

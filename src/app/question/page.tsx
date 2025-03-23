@@ -6,9 +6,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { auth } from '@/app/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/app/firebase/firebase';
 import questionsData from '@/question/question.json';
+import { CheckCircle } from 'lucide-react'; // Import the green tick icon
 
 // Define the Question interface based on your JSON structure
 interface Question {
@@ -40,10 +41,12 @@ const QuestionPage = () => {
   const [advancedQuestions, setAdvancedQuestions] = useState<Question[]>([]);
   const [basicSlideIndex, setBasicSlideIndex] = useState(1);
   const [advancedSlideIndex, setAdvancedSlideIndex] = useState(1);
+  const [solvedQuestions, setSolvedQuestions] = useState<Set<string>>(new Set()); // Track solved questions
+  const [totalQuestions, setTotalQuestions] = useState<number>(0); // Track total questions for the role
   const basicSliderRef = useRef<Slider>(null);
   const advancedSliderRef = useRef<Slider>(null);
 
-  // Get user role and questionBank access from authentication
+  // Get user role, questionBank access, and solved questions from Firestore
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -52,8 +55,10 @@ const QuestionPage = () => {
           if (userDoc.exists()) {
             const role = userDoc.data().role;
             const questionBank = userDoc.data().questionBank; // Get questionBank access level
+            const solved = userDoc.data().solvedQuestions || []; // Get solved questions
             setUserRole(role);
             setQuestionBankAccess(questionBank);
+            setSolvedQuestions(new Set(solved)); // Convert array to Set for faster lookups
           }
         } catch (error) {
           console.error("Error fetching user document:", error);
@@ -65,7 +70,7 @@ const QuestionPage = () => {
     return () => unsubscribe();
   }, []);
 
-  // Filter questions based on user role and questionBank access
+  // Filter questions based on user role and calculate total questions
   useEffect(() => {
     if (userRole) {
       // Check if userRole exists directly as a key
@@ -78,12 +83,26 @@ const QuestionPage = () => {
 
         setBasicQuestions(basic);
         setAdvancedQuestions(advanced);
+
+        // Calculate total questions
+        const total = basic.length + advanced.length;
+        setTotalQuestions(total);
+
+        // Update total questions in Firestore
+        const user = auth.currentUser;
+        if (user) {
+          updateDoc(doc(db, "users", user.uid), {
+            totalQuestions: total,
+          }).catch((error) => {
+            console.error("Error updating total questions:", error);
+          });
+        }
       } else {
         // Try with case-insensitive matching
         const matchingKey = Object.keys(questions).find(
           key => key.toLowerCase() === userRole.toLowerCase()
         );
-        
+
         if (matchingKey) {
           const allQuestions = questions[matchingKey];
 
@@ -93,29 +112,78 @@ const QuestionPage = () => {
 
           setBasicQuestions(basic);
           setAdvancedQuestions(advanced);
+
+          // Calculate total questions
+          const total = basic.length + advanced.length;
+          setTotalQuestions(total);
+
+          // Update total questions in Firestore
+          const user = auth.currentUser;
+          if (user) {
+            updateDoc(doc(db, "users", user.uid), {
+              totalQuestions: total,
+            }).catch((error) => {
+              console.error("Error updating total questions:", error);
+            });
+          }
         } else {
           // Fallback: search through all questions by role field
           const allQuestions = Object.values(questions).flat();
-          const basic = allQuestions.filter(q => 
+          const basic = allQuestions.filter(q =>
             q.role && q.role.toLowerCase() === userRole.toLowerCase() && q.tags.toLowerCase() === 'basic'
           );
-          const advanced = allQuestions.filter(q => 
+          const advanced = allQuestions.filter(q =>
             q.role && q.role.toLowerCase() === userRole.toLowerCase() && q.tags.toLowerCase() === 'advanced'
           );
 
           setBasicQuestions(basic);
           setAdvancedQuestions(advanced);
+
+          // Calculate total questions
+          const total = basic.length + advanced.length;
+          setTotalQuestions(total);
+
+          // Update total questions in Firestore
+          const user = auth.currentUser;
+          if (user) {
+            setDoc(doc(db, "users", user.uid), {
+              totalQuestions: total,
+            }, { merge: true }).catch((error) => {
+              console.error("Error updating total questions:", error);
+            });
+          }
         }
       }
     }
   }, [userRole, questionBankAccess]);
 
-  // Function to toggle the visibility of the answer
-  const toggleAnswer = (questionId: string) => {
+  // Function to toggle the visibility of the answer and mark the question as solved
+  const toggleAnswer = async (questionId: string) => {
     setShowAnswer((prev) => ({
       ...prev,
       [questionId]: !prev[questionId],
     }));
+
+    // If the question is being shown for the first time, mark it as solved
+    if (!showAnswer[questionId]) {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          // Add the question ID to the solvedQuestions Set
+          const updatedSolvedQuestions = new Set(solvedQuestions).add(questionId);
+
+          // Update Firestore
+          await updateDoc(doc(db, "users", user.uid), {
+            solvedQuestions: Array.from(updatedSolvedQuestions), // Convert Set to array
+          });
+
+          // Update local state
+          setSolvedQuestions(updatedSolvedQuestions);
+        } catch (error) {
+          console.error("Error updating solved questions:", error);
+        }
+      }
+    }
   };
 
   // Carousel Settings
@@ -163,6 +231,9 @@ const QuestionPage = () => {
   return (
     <div className="min-h-screen bg-white p-6">
       <h1 className="text-3xl font-bold mb-8 text-center text-gray-900">Questions for {userRole}</h1>
+      <p className="text-lg text-gray-700 mb-8 text-center">
+        Total Questions: {totalQuestions} (Solved: {solvedQuestions.size}, Basic: {basicQuestions.length}, Advanced: {advancedQuestions.length})
+      </p>
 
       {/* Basic Questions Carousel */}
       <div className="mb-12 flex flex-col items-center">
@@ -171,12 +242,19 @@ const QuestionPage = () => {
           <Slider {...carouselSettings} ref={basicSliderRef}>
             {basicQuestions.map((q, index) => {
               const questionId = `basic-${index}`;
+              const isSolved = solvedQuestions.has(questionId); // Check if the question is solved
               return (
                 <div
                   key={questionId}
-                  className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 mx-2"
+                  className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 mx-2 relative"
                   style={{ width: '300px', height: '300px', margin: '0 auto' }} // Squarish dimensions and centered
                 >
+                  {/* Green tick for solved questions */}
+                  {isSolved && (
+                    <div className="absolute top-2 right-2">
+                      <CheckCircle className="text-green-500" size={24} />
+                    </div>
+                  )}
                   <h3 className="text-xl font-semibold mb-4 text-gray-900">{q.question}</h3>
                   <button
                     onClick={() => toggleAnswer(questionId)}
@@ -196,7 +274,7 @@ const QuestionPage = () => {
           <div className="flex justify-center items-center mt-4 space-x-4">
             <button
               onClick={() => basicSliderRef.current?.slickPrev()}
-              className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 cursor-pointer"   
+              className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 cursor-pointer"
             >
               &larr; Previous
             </button>
@@ -221,12 +299,19 @@ const QuestionPage = () => {
             <Slider {...carouselSettings} ref={advancedSliderRef}>
               {advancedQuestions.map((q, index) => {
                 const questionId = `advanced-${index}`;
+                const isSolved = solvedQuestions.has(questionId); // Check if the question is solved
                 return (
                   <div
                     key={questionId}
-                    className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 mx-2"
+                    className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 mx-2 relative"
                     style={{ width: '300px', height: '300px', margin: '0 auto' }} // Squarish dimensions and centered
                   >
+                    {/* Green tick for solved questions */}
+                    {isSolved && (
+                      <div className="absolute top-2 right-2">
+                        <CheckCircle className="text-green-500" size={24} />
+                      </div>
+                    )}
                     <h3 className="text-xl font-semibold mb-4 text-gray-900">{q.question}</h3>
                     <button
                       onClick={() => toggleAnswer(questionId)}

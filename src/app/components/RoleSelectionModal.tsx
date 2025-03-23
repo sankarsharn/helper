@@ -39,12 +39,12 @@ const RoleSelectionModal: React.FC<RoleSelectionModalProps> = ({
           <option value="" disabled>
             Choose a role
           </option>
-          <option value="Investment Banking (IB)">Investment Banking (IB)</option>
-          <option value="Private Equity (PE)">Private Equity (PE)</option>
-          <option value="Hedge Funds (HF)">Hedge Funds (HF)</option>
-          <option value="Equity Research (ER)">Equity Research (ER)</option>
-          <option value="Asset Management (AM)">Asset Management (AM)</option>
-          <option value="Corporate Finance (CF)">Corporate Finance (CF)</option>
+          <option value="Investment Banking (IB)">Investment Banking</option>
+          <option value="Private Equity (PE)">Private Equity</option>
+          <option value="Hedge Funds (HF)">Hedge Funds</option>
+          <option value="Equity Research (ER)">Equity Research</option>
+          <option value="Asset Management (AM)">Asset Management</option>
+          <option value="Corporate Finance (CF)">Corporate Finance</option>
         </select>
         </div>
         <div className="mt-4 flex justify-end space-x-2">
