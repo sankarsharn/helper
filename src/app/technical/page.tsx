@@ -31,13 +31,16 @@ const Page = () => {
   const [isFollowUp, setIsFollowUp] = useState(false);
   const [chatHistory, setChatHistory] = useState([]);
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hour in seconds
+  const [questionTimeLeft, setQuestionTimeLeft] = useState(240); // 4 minutes per question in seconds
   const [timerActive, setTimerActive] = useState(false);
+  const [questionTimerActive, setQuestionTimerActive] = useState(false);
   
   const recognitionRef = useRef(null);
   const modalRef = useRef(null);
   const chatContainerRef = useRef(null);
   const messagesEndRef = useRef(null);
   const timerRef = useRef(null);
+  const questionTimerRef = useRef(null);
 
   // Load interview progress from localStorage
   useEffect(() => {
@@ -49,6 +52,7 @@ const Page = () => {
           currentQuestionIndex,
           chatHistory,
           timeLeft,
+          questionTimeLeft,
           isDialogOpen
         } = JSON.parse(savedInterview);
         
@@ -57,8 +61,10 @@ const Page = () => {
           setCurrentQuestionIndex(currentQuestionIndex || 0);
           setChatHistory(chatHistory || []);
           setTimeLeft(timeLeft || 3600);
+          setQuestionTimeLeft(questionTimeLeft || 240);
           setIsDialogOpen(true);
           setTimerActive(true);
+          setQuestionTimerActive(true);
         }
       } catch (e) {
         console.error("Failed to load interview progress", e);
@@ -74,15 +80,16 @@ const Page = () => {
         currentQuestionIndex,
         chatHistory,
         timeLeft,
+        questionTimeLeft,
         isDialogOpen
       };
       localStorage.setItem('technicalInterviewProgress', JSON.stringify(interviewProgress));
     } else {
       localStorage.removeItem('technicalInterviewProgress');
     }
-  }, [selectedQuestions, currentQuestionIndex, chatHistory, timeLeft, isDialogOpen]);
+  }, [selectedQuestions, currentQuestionIndex, chatHistory, timeLeft, questionTimeLeft, isDialogOpen]);
 
-  // Timer logic
+  // Total timer logic
   useEffect(() => {
     if (timerActive) {
       timerRef.current = setInterval(() => {
@@ -104,10 +111,47 @@ const Page = () => {
     };
   }, [timerActive]);
 
+  // Per-question timer logic
+  useEffect(() => {
+    if (questionTimerActive) {
+      questionTimerRef.current = setInterval(() => {
+        setQuestionTimeLeft((prev) => {
+          if (prev <= 1) {
+            clearInterval(questionTimerRef.current);
+            handleQuestionTimeout();
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      if (questionTimerRef.current) {
+        clearInterval(questionTimerRef.current);
+      }
+    };
+  }, [questionTimerActive, currentQuestionIndex]);
+
+  const handleQuestionTimeout = () => {
+    // Add timeout message to chat history
+    addBotMessage("Time for this question has ended. Moving to the next question.");
+    
+    // Move to next question or finish interview
+    if (currentQuestionIndex < selectedQuestions.length - 1) {
+      handleNextQuestion();
+    } else {
+      handleFinishInterview();
+    }
+  };
+
   const handleInterviewTimeout = async () => {
     // Add timeout message to chat history
     addBotMessage("Your interview time has ended. The session will now conclude.");
-    
+    handleFinishInterview();
+  };
+
+  const handleFinishInterview = async () => {
     const user = auth.currentUser;
     if (user) {
       const userDoc = await getDoc(doc(db, "users", user.uid));
@@ -128,6 +172,16 @@ const Page = () => {
 
         await updateDoc(doc(db, "users", user.uid), updates);
       }
+    }
+
+    // Stop all timers
+    setTimerActive(false);
+    setQuestionTimerActive(false);
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+    if (questionTimerRef.current) {
+      clearInterval(questionTimerRef.current);
     }
 
     // Delay closing to allow user to read the completion message
@@ -286,11 +340,13 @@ const Page = () => {
     setIsDialogOpen(true);
     setChatHistory([]);
     setTimeLeft(3600);
+    setQuestionTimeLeft(240);
     setTimerActive(true);
+    setQuestionTimerActive(true);
 
     // Add initial system message introducing the interview
     setTimeout(() => {
-      const welcomeMsg = "Welcome to your technical interview. I'll be asking you questions about finance, valuation, and market analysis. Let's begin with the first question:";
+      const welcomeMsg = "Welcome to your technical interview. You'll have 4 minutes per question and 1 hour total. I'll be asking you questions about finance, valuation, and market analysis. Let's begin with the first question:";
       addBotMessage(welcomeMsg);
       
       // Add first question immediately after welcome message
@@ -426,6 +482,12 @@ const Page = () => {
 
   // Move to the next question or finish the interview
   const handleNextQuestion = async () => {
+    // Stop current question timer
+    setQuestionTimerActive(false);
+    if (questionTimerRef.current) {
+      clearInterval(questionTimerRef.current);
+    }
+
     if (currentQuestionIndex < selectedQuestions.length - 1) {
       const nextIndex = currentQuestionIndex + 1;
       setCurrentQuestionIndex(nextIndex);
@@ -435,6 +497,8 @@ const Page = () => {
       setIsAnswerEvaluated(false);
       setShowBotAnswer(false);
       setIsFollowUp(false);
+      setQuestionTimeLeft(240); // Reset to 4 minutes for new question
+      setQuestionTimerActive(true); // Start timer for new question
       
       // Add transition message
       setIsBotTyping(true);
@@ -447,43 +511,7 @@ const Page = () => {
       setIsBotTyping(false);
       
     } else {
-      const user = auth.currentUser;
-      if (user) {
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          const updatedInterviewGiven = (userData.interviewGiven || 0) + 1;
-
-          // Update Firestore with new interviewGiven and interview count (if free plan)
-          const updates = {
-            interviewGiven: updatedInterviewGiven,
-          };
-
-          if (userPlan === 0) {
-            const updatedInterviewCount = interviewCount - 1;
-            updates.interview = updatedInterviewCount;
-            setInterviewCount(updatedInterviewCount);
-          }
-
-          await updateDoc(doc(db, "users", user.uid), updates);
-        }
-      }
-
-      // Add completion message to chat history
-      addBotMessage("This completes your interview session. Great job!");
-      
-      // Stop the timer
-      setTimerActive(false);
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-      
-      // Delay closing to allow user to read the completion message
-      setTimeout(() => {
-        setIsDialogOpen(false);
-        localStorage.removeItem('technicalInterviewProgress');
-        router.push("/interview");
-      }, 3000);
+      handleFinishInterview();
     }
   };
 
@@ -573,7 +601,10 @@ const Page = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-sm bg-gray-700 px-3 py-1 rounded-full text-white">
-                    Time Remaining: <span className="font-semibold text-indigo-300">{formatTime(timeLeft)}</span>
+                    Total: <span className="font-semibold text-indigo-300">{formatTime(timeLeft)}</span>
+                  </div>
+                  <div className="text-sm bg-gray-700 px-3 py-1 rounded-full text-white">
+                    Question: <span className="font-semibold text-purple-300">{formatTime(questionTimeLeft)}</span>
                   </div>
                   {isAnswerEvaluated && score !== null && (
                     <div className="text-sm bg-gray-700 px-3 py-1 rounded-full text-white">
