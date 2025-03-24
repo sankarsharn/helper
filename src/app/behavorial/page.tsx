@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { BrainCircuit, Mic, MicOff, Send, ChevronRight, User, Bot } from "lucide-react";
+import { BrainCircuit, Mic, MicOff, ChevronRight, User, Bot } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { auth } from "@/app/firebase/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
@@ -531,24 +531,16 @@ const Page = () => {
     fetchUserData();
   }, []);
 
-  const submitAnswer = (e) => {
-    e.preventDefault();
-    if (!isEvaluating && !isBotTyping) {
+  // Auto-submit when speech recognition completes
+  useEffect(() => {
+    if (!isListening) {
       if (isAnswerEvaluated && followUpQuestion.trim()) {
         handleFollowUpQuestion();
       } else if (!isAnswerEvaluated && userAnswer.trim()) {
         handleEvaluateAnswer();
       }
     }
-  };
-
-  // Handle keydown for textarea (submit on Enter without Shift)
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      submitAnswer(e);
-    }
-  };
+  }, [isListening, userAnswer, followUpQuestion]);
 
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
@@ -686,55 +678,42 @@ const Page = () => {
 
             {/* Input area */}
             <div className="flex-shrink-0 p-4 border-t border-gray-700 bg-gray-800 sticky bottom-0 z-10">
-              <form onSubmit={submitAnswer} className="flex flex-col space-y-4 max-w-4xl mx-auto">
-                <textarea
-                  value={isAnswerEvaluated ? followUpQuestion : userAnswer}
-                  onChange={(e) => 
-                    isAnswerEvaluated 
-                      ? setFollowUpQuestion(e.target.value) 
-                      : setUserAnswer(e.target.value)
-                  }
-                  onKeyDown={handleKeyDown}
-                  placeholder={
-                    isAnswerEvaluated 
-                      ? "Ask a follow-up question... (Press Enter to send)"
-                      : "Type your answer here... (Press Enter to send)"
-                  }
-                  className="w-full p-3 border border-gray-600 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none shadow-sm placeholder-gray-400"
-                  rows={3}
-                  disabled={isEvaluating || isBotTyping}
-                  aria-label={isAnswerEvaluated ? "Follow-up question" : "Your answer"}
-                />
+              <div className="flex flex-col space-y-4 max-w-4xl mx-auto">
+                {/* Speech indicator */}
+                <div className="w-full p-3 border border-gray-600 rounded-lg bg-gray-700 text-white shadow-sm">
+                  {isListening ? (
+                    <div className="flex items-center justify-center gap-2 text-indigo-300">
+                      <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                      <span>Listening... Speak now</span>
+                    </div>
+                  ) : isAnswerEvaluated ? (
+                    <div className="text-gray-400 text-center">
+                      {followUpQuestion ? "Ready to submit follow-up" : "Press microphone to ask a follow-up question"}
+                    </div>
+                  ) : (
+                    <div className="text-gray-400 text-center">
+                      {userAnswer ? "Ready to submit answer" : "Press microphone to answer the question"}
+                    </div>
+                  )}
+                </div>
                 
-                <div className="flex space-x-3">
+                <div className="flex space-x-3 justify-center">
                   {/* Microphone Button */}
                   <button
                     type="button"
                     onClick={isAnswerEvaluated ? handleFollowUpSpeech : handleRegularSpeech}
                     disabled={isEvaluating || isBotTyping}
-                    className={`px-4 py-2 rounded-lg transition flex items-center justify-center gap-2 ${
+                    className={`px-6 py-3 rounded-lg transition flex items-center justify-center gap-2 ${
                       isListening
                         ? "bg-red-600 hover:bg-red-700 text-white"
-                        : "bg-gray-700 hover:bg-gray-600 text-white"
+                        : "bg-indigo-600 hover:bg-indigo-700 text-white"
                     } ${(isEvaluating || isBotTyping) ? "opacity-50 cursor-not-allowed" : ""}`}
                     aria-label={isListening ? "Stop speaking" : "Start speaking"}
                   >
-                    {isListening ? <MicOff size={20} /> : <Mic size={20} />}
-                  </button>
-                  
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isEvaluating || isBotTyping || (!isAnswerEvaluated && !userAnswer.trim()) || (isAnswerEvaluated && !followUpQuestion.trim())}
-                    className={`flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center justify-center gap-2 ${
-                      (isEvaluating || isBotTyping || (!isAnswerEvaluated && !userAnswer.trim()) || (isAnswerEvaluated && !followUpQuestion.trim())) 
-                        ? "opacity-50 cursor-not-allowed" 
-                        : ""
-                    }`}
-                    aria-label="Send message"
-                  >
-                    {isEvaluating ? "Processing..." : "Send"} 
-                    <Send size={16} />
+                    {isListening ? <MicOff size={24} /> : <Mic size={24} />}
+                    <span className="hidden sm:inline">
+                      {isAnswerEvaluated ? "Ask Follow-up" : "Answer Question"}
+                    </span>
                   </button>
                   
                   {/* Next Question Button */}
@@ -743,19 +722,19 @@ const Page = () => {
                       type="button"
                       onClick={handleNextQuestion}
                       disabled={isEvaluating || isBotTyping}
-                      className={`px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition flex items-center justify-center gap-2 ${
+                      className={`px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition flex items-center justify-center gap-2 ${
                         (isEvaluating || isBotTyping) ? "opacity-50 cursor-not-allowed" : ""
                       }`}
                       aria-label={currentQuestionIndex < selectedQuestions.length - 1 ? "Next question" : "Finish interview"}
                     >
                       {currentQuestionIndex < selectedQuestions.length - 1
-                        ? "Next"
-                        : "Finish"}
-                      <ChevronRight size={16} />
+                        ? "Next Question"
+                        : "Finish Interview"}
+                      <ChevronRight size={20} />
                     </button>
                   )}
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
