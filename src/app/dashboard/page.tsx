@@ -14,9 +14,6 @@ const Dashboard = () => {
   const [userPlan, setUserPlan] = useState<number>(0); // Default to free plan
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
   const router = useRouter();
 
   useEffect(() => {
@@ -46,7 +43,6 @@ const Dashboard = () => {
   useEffect(() => {
     // Handle responsive behavior
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
       if (window.innerWidth < 768) {
         setIsSidebarOpen(false);
       } else {
@@ -84,7 +80,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex h-screen bg-neutral-900"> {/* Dark background */}
+    <div className="flex h-screen bg-neutral-900">
       {/* Sidebar */}
       <div
         className={`bg-neutral-800 shadow-lg transition-all duration-300 flex flex-col ${
@@ -155,7 +151,6 @@ const Dashboard = () => {
             </div>
             {isSidebarOpen && <span className="ml-2">Dashboard</span>}
           </Link>
-          {/* Progress link with conditional redirect */}
           <a
             href="#"
             onClick={handleProgressClick}
@@ -223,7 +218,7 @@ const Dashboard = () => {
           </Link>
         </nav>
 
-        {/* User Role at the Bottom (now properly inside the sidebar) */}
+        {/* User Role at the Bottom */}
         <div className="p-4 bg-neutral-700 mt-auto">
           {isSidebarOpen ? (
             <div>
@@ -294,7 +289,7 @@ const Dashboard = () => {
             </div>
           </Link>
 
-          {/* Card 3: Progress Tracking with conditional redirect */}
+          {/* Card 3: Progress Tracking */}
           <div
             onClick={handleProgressClick}
             className="bg-neutral-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"

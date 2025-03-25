@@ -4,8 +4,10 @@ import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import { IconGauge, IconChartBar, IconCreditCard } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import Image from 'next/image';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { cn } from '@/lib/utils';
 
 
 export function SidebarComponent() {

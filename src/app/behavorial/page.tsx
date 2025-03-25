@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
 import { BrainCircuit, Mic, MicOff, ChevronRight, User, Bot } from "lucide-react";
 import { useRouter } from "next/navigation";

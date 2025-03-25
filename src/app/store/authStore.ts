@@ -1,15 +1,16 @@
-import {create} from "zustand";
+import { create } from "zustand";
+import { User } from "firebase/auth";
 
 type AuthState = {
-    user: any; // Replace 'any' with your User type
+    user: User | null; // Replaced 'any' with Firebase User type
     role: string | null;
-    setUser: (user: any) => void;
+    setUser: (user: User | null) => void; // Replaced 'any' with Firebase User type
     setRole: (role: string) => void;
-  };
+};
 
 export const useAuthStore = create<AuthState>((set) => ({
     user: null,
     role: null,
     setUser: (user) => set({ user }),
     setRole: (role) => set({ role }),
-  }));
+}));

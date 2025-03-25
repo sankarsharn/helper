@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { getAuth, GoogleAuthProvider, OAuthProvider, signInWithPopup } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
