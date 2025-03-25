@@ -14,7 +14,7 @@ const API_URL = "http://127.0.0.1:5000";
 
 const Page = () => {
   const router = useRouter();
-  const [selectedQuestions, setSelectedQuestions] = useState([]);
+  const [selectedQuestions, setSelectedQuestions] = useState<any[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [userAnswer, setUserAnswer] = useState("");
@@ -29,18 +29,36 @@ const Page = () => {
   const [isBotTyping, setIsBotTyping] = useState(false);
   const [followUpQuestion, setFollowUpQuestion] = useState("");
   const [isFollowUp, setIsFollowUp] = useState(false);
-  const [chatHistory, setChatHistory] = useState([]);
+  interface ChatMessage {
+    role: string;
+    content: string;
+    id: string;
+  }
+
+  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hour in seconds
   const [questionTimeLeft, setQuestionTimeLeft] = useState(240); // 4 minutes per question in seconds
   const [timerActive, setTimerActive] = useState(false);
   const [questionTimerActive, setQuestionTimerActive] = useState(false);
   
-  const recognitionRef = useRef(null);
-  const modalRef = useRef(null);
+  interface SpeechRecognitionEvent extends Event {
+    results: SpeechRecognitionResultList;
+    resultIndex: number;
+    interpretation: any;
+    emma: Document | null;
+  }
+  
+  interface SpeechRecognitionErrorEvent extends Event {
+    error: string;
+    message: string;
+  }
+
+  const recognitionRef = useRef<null | (typeof window.SpeechRecognition | typeof window.webkitSpeechRecognition)>(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
   const chatContainerRef = useRef(null);
-  const messagesEndRef = useRef(null);
-  const timerRef = useRef(null);
-  const questionTimerRef = useRef(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const questionTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Load interview progress from localStorage
   useEffect(() => {
@@ -95,7 +113,7 @@ const Page = () => {
       timerRef.current = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev <= 1) {
-            clearInterval(timerRef.current);
+            clearInterval(timerRef.current as NodeJS.Timeout);
             handleInterviewTimeout();
             return 0;
           }
@@ -117,7 +135,7 @@ const Page = () => {
       questionTimerRef.current = setInterval(() => {
         setQuestionTimeLeft((prev) => {
           if (prev <= 1) {
-            clearInterval(questionTimerRef.current);
+            clearInterval(questionTimerRef.current as NodeJS.Timeout);
             handleQuestionTimeout();
             return 0;
           }
@@ -166,7 +184,7 @@ const Page = () => {
 
         if (userPlan === 0) {
           const updatedInterviewCount = interviewCount - 1;
-          updates.interview = updatedInterviewCount;
+          (updates as { interviewGiven: any; interview: any }).interview = updatedInterviewCount;
           setInterviewCount(updatedInterviewCount);
         }
 
@@ -193,7 +211,7 @@ const Page = () => {
   };
 
   // Format time for display
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
@@ -217,7 +235,7 @@ const Page = () => {
       recognitionRef.current.interimResults = false;
       recognitionRef.current.lang = "en-US";
 
-      recognitionRef.current.onresult = (event) => {
+      recognitionRef.current.onresult = (event: SpeechRecognitionEvent) => {
         const transcript = event.results[0][0].transcript;
         
         if (isFollowUp) {
@@ -228,7 +246,7 @@ const Page = () => {
         setIsListening(false);
       };
 
-      recognitionRef.current.onerror = (event) => {
+      recognitionRef.current.onerror = (event: SpeechRecognitionErrorEvent) => {
         console.error("Speech recognition error:", event.error);
         setIsListening(false);
       };
@@ -287,7 +305,7 @@ const Page = () => {
   };
 
   // Function to add a bot message without typing animation
-  const addBotMessage = (message) => {
+  const addBotMessage = (message: string) => {
     const messageId = Date.now().toString();
     
     // Add the complete message immediately
@@ -359,7 +377,7 @@ const Page = () => {
   };
 
   // Shuffle array function
-  const shuffleArray = (array) => {
+  const shuffleArray = (array: any[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -376,7 +394,7 @@ const Page = () => {
   }, [currentQuestionIndex, isDialogOpen, selectedQuestions]);
 
   // Fetch bot's answer
-  const fetchBotAnswer = async (question) => {
+  const fetchBotAnswer = async (question: string) => {
     setIsBotTyping(true);
     try {
       await fetch(`${API_URL}/receive-question`, {
@@ -516,8 +534,8 @@ const Page = () => {
   };
 
   // Prevent closing the modal during the interview
-  const handleClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       event.preventDefault(); // Prevent closing the modal
     }
   };
