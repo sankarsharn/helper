@@ -1,5 +1,6 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useRef } from "react";
 import { BrainCircuit, Mic, MicOff, ChevronRight, User, Bot } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -44,11 +45,11 @@ const Page = () => {
     id: string;
   }
   interface SpeechRecognitionEvent extends Event {
-    results: SpeechRecognitionResultList;
-    resultIndex: number;
-    interpretation: any;
-    emma: Document | null;
-  }
+  results: SpeechRecognitionResultList;
+  resultIndex: number;
+  interpretation: unknown;  // Safer alternative to any
+  emma: Document | null;
+}
   
   interface SpeechRecognitionErrorEvent extends Event {
     error: string;
